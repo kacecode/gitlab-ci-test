@@ -1,7 +1,35 @@
+stages:
+  - dev
+  - staging
+  - production
+
 before_script:
   - apt-get update -qq && apt-get install -y -qq python3
   - python3 --version
 
-foo:
+deva:
   script:
-    - python3 test.py --fail
+    - python3 test.py
+  stage: dev
+
+devb:
+  script:
+    - echo "true"
+  stage: dev
+  only:
+    - dev
+
+staging:
+  script:
+    - python3 test.py
+  stage: staging
+  only:
+    - staging
+    - master
+    
+production:
+  script:
+    - python3 test.py
+  stage: production
+  only:
+    - master
