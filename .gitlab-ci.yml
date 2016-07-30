@@ -15,7 +15,7 @@ deva:
 
 devb:
   script:
-    - echo "true"
+    - echo $A_SECRET
   stage: dev
   only:
     - dev
