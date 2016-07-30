@@ -33,3 +33,4 @@ production:
   stage: production
   only:
     - master
+  environment: production
